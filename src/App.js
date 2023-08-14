@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import DigitButton from "./DigitButton";
+import OperationButton from "./OperationButton";
 
 export const ACTIONS = {
   ADD_DIGIT: "add-digit",
@@ -14,7 +15,7 @@ function reducer(state, {type, payload}) {
     case ACTIONS.ADD_DIGIT:
       return {
         ...state,
-        currentOperand: `${currentOperand || ""}${payload.digit}`
+        currentOperand: `${state.currentOperand || ""}${payload.digit}`
       }
   }
 }
@@ -30,19 +31,19 @@ function App() {
       </div>
       <button className="span-two">AC</button>
       <button>DEL</button>
-      <button>÷</button>
+      <OperationButton operation="÷" dispatch={dispatch} />
       <DigitButton digit="1" dispatch={dispatch} />
       <DigitButton digit="2" dispatch={dispatch} />
       <DigitButton digit="3" dispatch={dispatch} />
-      <button>*</button>
+      <OperationButton operation="x" dispatch={dispatch} />
       <DigitButton digit="1" dispatch={dispatch} />
       <DigitButton digit="2" dispatch={dispatch} />
       <DigitButton digit="3" dispatch={dispatch} />
-      <button>+</button>
+      <OperationButton operation="+" dispatch={dispatch} />
       <DigitButton digit="1" dispatch={dispatch} />
       <DigitButton digit="2" dispatch={dispatch} />
       <DigitButton digit="3" dispatch={dispatch} />
-      <button>-</button>
+      <OperationButton operation="-" dispatch={dispatch} />
       <button>.</button>
       <DigitButton digit="0" dispatch={dispatch} />
       <button className="span-two">=</button>
